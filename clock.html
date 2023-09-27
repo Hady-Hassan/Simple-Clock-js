@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="clock.css">
+
+</head>
+<body>
+ 
+    <div id = "dis"> </div>
+    <script>
+        function Time() 
+        {
+            
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var period = "";
+            
+            if (h >= 12) 
+            {
+                period = "PM";
+            } 
+            else {
+                period = "AM";
+            } 
+            if (h == 0) 
+            {
+                h = 12;
+            } else {
+                if (h > 12) 
+                {
+                    h = h - 12;
+                }
+            }
+            h = update(h);
+            m = update(m);
+            s = update(s);  
+            document.getElementById("dis").innerText = h + " : " + m + " : " + s + " " + period;
+            setTimeout(Time, 1000);
+            }
+            function update(t) 
+            {
+                if (t < 10) 
+                {
+                    return "0" + t;
+                }
+                else {
+                    return t;
+                }
+            }
+        Time();
+    </script>
+</body>
+</html>
